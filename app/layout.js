@@ -1,22 +1,22 @@
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { ClerkProvider } from '@clerk/nextjs'
+import { AuthProvider } from '@/contexts/AuthContext'
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "MetaSelect - Breast Cancer Classification",
-  description: "AI-powered breast cancer classification tool",
+  title: "MetaSelect AI- Breast Cancer Classification",
+  description: "XAI-powered tool for breast cancer detection explanations",
 }
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={`${inter.className} bg-gray-900 text-white min-h-screen`}>
+    <html lang="en">
+      <body className={`${inter.className} app-body`}>
+        <AuthProvider>
           {children}
-        </body>
-      </html>
-    </ClerkProvider>
+        </AuthProvider>
+      </body>
+    </html>
   )
 }
